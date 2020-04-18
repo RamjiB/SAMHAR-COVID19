@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>COVID-19 Detection from X-Ray Images</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="jumbotron text-center">
+    <h1>COVID-19 Detection from Radiographic Image</h1>
+    <p style="color:red"> This will be helpful only as a initial screening phase for doctors to speed up the test (Model is 83.33% accurate and under development) </p>
+</div>
+
+<div>
+    <p align="center" style="font-size:100%">Result</p>
+</div>
+<div class="container" align="center">
+    {{image_name}}
+    <hr>
+</div>
+
+<div class="container" align="center">
+        <table class="table" align="center">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Prediction (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Normal</td>
+                    <td>{{normal}}</td>
+                  </tr>
+                  <tr>
+                    <td>Bacterial</td>
+                    <td>{{bacterial}}</td>
+                  </tr>
+                  <tr>
+                    <td>Viral</td>
+                    <td>{{viral}}</td>
+                  </tr>
+                  <tr>
+                    <td>Covid-19</td>
+                    <td>{{covid}}</td>
+                  </tr>
+                </tbody>
+        </table>
+</div>
+
+<style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height:50px;
+  padding-top: 10px;
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+}
+</style>
+
+<div class="footer" >
+  <p> Developed by <a href="https://www.ram-b.com/">&copy;Ramji Balasubramanian</a></p>
+
+</div>
