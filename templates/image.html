@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>COVID-19 Detection from X-Ray Images</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="jumbotron text-center">
+    <h1>COVID-19 Detection from Radiographic Image</h1>
+    <p style="color:red"> This will be helpful only as a initial screening phase for doctors to speed up the test (Model is 83.33% accurate and under development) </p>
+</div>
+<div>
+    <p align="center", style="font-size:100%">Upload any X-Ray Image(Chest Portion) and find out if a person is infected or not. The infection may be bacterial, general viral or specific COVID-19 viral</p>
+</div>
+  
+<style type="text/css">
+        html,
+        body {
+            height: 300px;
+        }
+
+        .top-left {
+            top: 0;
+            left: 0;
+        }
+
+        .top-center {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .top-right {
+            top: 0;
+            right: 0;
+        }
+
+        .mid-left {
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .mid-center {
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .mid-right {
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+        }
+
+        .bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+
+        .bottom-center {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .bottom-right {
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <form action="/" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name="image" id="image" oninput="input_filename();">
+            <label class="custom-file-label" for="image" id="file_input_label">Select image...</label>
+          </div>
+        </div>
+
+        <div class="container h-100">
+          <div class="position-relative h-100">
+          <div class = "position-absolute top-left">
+            <button  type="submit" class="btn btn-primary" id="predict_btn" name="predict button" value="predict">Predict</button>
+          </div>
+          <div class="position-absolute top-right">
+          <button onclick="shared('{{ request.url }}')" type="submit" class="btn btn-primary id="share_btn" name="share button" value="share">Share</button>
+            </div>
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container" style="margin-top:60px" align="center">
+  <!-- <p align="center">{{image_name}}</p> -->
+  <div class="row">
+    <div class="col">
+      <img src="{{url_for('static', filename=image_name)}}" height="100%" width="50%">
+    </div>
+    <div class="col"> 
+
+      <table class="table", align="center">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Prediction (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Normal</td>
+            <td>{{normal}}</td>
+          </tr>
+          <tr>
+            <td>Bacterial</td>
+            <td>{{bacterial}}</td>
+          </tr>
+          <tr>
+            <td>Viral</td>
+            <td>{{viral}}</td>
+          </tr>
+          <tr>
+            <td>Covid-19</td>
+            <td>{{covid}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+  
+<style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height:50px;
+  padding-top: 10px;
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+}
+</style>
+
+<div class="footer" >
+  <p> Developed by <a href="https://www.ram-b.com/">&copy;Ramji Balasubramanian</a></p>
+</div>
+  
+<script>
+    var input = document.getElementById("image")
+    var file_input_label = document.getElementById("file_input_label")
+    
+    var predict_btn = document.getElementById("predict_btn")
+    var share_btn = document.getElementById("share_btn")
+
+    function input_filename() {
+      file_input_label.innerText = input.files[0].name;
+     }
+  </script>
+</body>
+
+</html>

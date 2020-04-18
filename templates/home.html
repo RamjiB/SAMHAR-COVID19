@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>COVID-19 Detection from X-Ray Images</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="jumbotron text-center">
+    <h1>COVID-19 Detection from Radiographic Image</h1>
+    <p style="color:red"> This will be helpful only as a initial screening phase for doctors to speed up the test (Model is 83.33% accurate and under development) </p>
+</div>
+<div>
+    <p align="center", style="font-size:100%">Upload any X-Ray Image(Chest Portion) and find out if a person is infected or not. The infection may be bacterial, general viral or specific COVID-19 viral</p>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <form action="/" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name="image" id="image" oninput="input_filename();">
+            <label class="custom-file-label" for="image" id="file_input_label">Select image...</label>
+          </div>
+        </div>
+
+        <div class="container h-100">
+          <div class="position-relative h-100">
+          <div class = "position-absolute top-left">
+            <button  type="submit" class="btn btn-primary" id="predict_btn" name="predict button" value="predict">Predict</button>
+          </div>
+          <div class="position-absolute top-right">
+          <button onclick="submit" type="submit" class="btn btn-primary d-none" id="share_btn" name="share button" value="share">Share</button>
+            </div>
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+  
+<style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height:50px;
+  padding-top: 10px;
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+}
+</style>
+
+<div class="footer" >
+  <p> Developed by <a href="https://www.ram-b.com/">&copy;Ramji Balasubramanian</a></p>
+</div>
+<script>
+    var input = document.getElementById("image")
+    var file_input_label = document.getElementById("file_input_label")
+
+    function input_filename() {
+      file_input_label.innerText = input.files[0].name;
+     }
+
+    </script>
+
+</body>
+
+</html>
