@@ -4,6 +4,7 @@
 
 #### Data: X-Ray image data
 #### Model: A basic CNN model
+#### Website Host: Render
 #### Primary result: 
 #### The model can successfully say 20 X-rays are COVID positive among 24 X-rays
 #### Among the missed four X-rays, two X-rays were classified as Bacterial infection and the other two X-rays as Viral infection.
