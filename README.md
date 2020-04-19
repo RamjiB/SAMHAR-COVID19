@@ -7,7 +7,7 @@
 #### Website Host: Render
 #### Database: AWS
 #### Primary result: 
-#### The model can successfully say 20 X-rays are COVID positive among 24 X-rays
-#### Among the missed four X-rays, two X-rays were classified as Bacterial infection and the other two X-rays as Viral infection.
-#### Likewise, Three normal X-rays were classified as COVID-19; Three bacteria-infected X-rays were classified as COVID-19. 
-#### None of the viral infected X-rays are falsely predicted as COVID-19 
+      - The model can successfully say 20 X-rays are COVID positive among 24 X-rays
+      - Among the missed four X-rays, two X-rays were classified as Bacterial infection and the other two X-rays as Viral infection.
+      - Likewise, Three normal X-rays were classified as COVID-19; Three bacteria-infected X-rays were classified as COVID-19. 
+      - None of the viral infected X-rays are falsely predicted as COVID-19 
